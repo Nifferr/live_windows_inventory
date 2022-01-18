@@ -1,8 +1,8 @@
-'Descricao: Inventario automatizado de máquinas e servidores
+'Descricao: Inventario automatizado de maquinas e servidores
 'Autor: Nicolas Flores Ferreira	
 'Data : Julho/2013
-'Atualizado: Julho/2021
-'Versão: V1.0
+'Atualizado: Janeiro/2022
+'Versao: V1.1
 
 
 On Error Resume Next
@@ -44,15 +44,15 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
     Objtextfile.writeline "<li><a href='#SO'>Sistema Operacional</a></li>"
     Objtextfile.writeline "<li><a href='#proc'>Processadores</a></li>"
     Objtextfile.writeline "<li><a href='#bios'>Bios e Hardware</a></li>"
-    Objtextfile.writeline "<li><a href='#mem'>Memória</a></li>"
-    Objtextfile.writeline "<li><a href='#rede'>Configurações de Rede</a></li>"
-    Objtextfile.writeline "<li><a href='#tcp'>Configurações TCP/IP</a></li>"
-    Objtextfile.writeline "<li><a href='#discos'>Configurações de Discos</a></li>"
+    Objtextfile.writeline "<li><a href='#mem'>Memï¿½ria</a></li>"
+    Objtextfile.writeline "<li><a href='#rede'>Configuraï¿½ï¿½es de Rede</a></li>"
+    Objtextfile.writeline "<li><a href='#tcp'>Configuraï¿½ï¿½es TCP/IP</a></li>"
+    Objtextfile.writeline "<li><a href='#discos'>Configuraï¿½ï¿½es de Discos</a></li>"
     Objtextfile.writeline "<li><a href='#controladores'>Placas  Controladores</a></li>"
     Objtextfile.writeline "<li><a href='#backup'>Unidade de Backup</a></li>"
     Objtextfile.writeline "<li><a href='#usuarios'>Usuarios Locais</a></li>"
     Objtextfile.writeline "<li><a href='#software'>Softwares Instalados</a></li>"
-    Objtextfile.writeline "<li><a href='#servicos'>Status dos Serviços</a></li>"
+    Objtextfile.writeline "<li><a href='#servicos'>Status dos Serviï¿½os</a></li>"
     Objtextfile.writeline "<li><a href='#compartilhamentos'>Compartilhamentos  Locais</a></li>"
     Objtextfile.writeline "<li><a href='#impressora'>Impressoras Locais</a></li>"
     Objtextfile.writeline "<li><a href='#portas'>Portas de Impressora</a></li>"
@@ -73,7 +73,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
     Objtextfile.writeline "</div>"
     Objtextfile.writeline "<div class='newsletter-section'>"
     Objtextfile.writeline "<div class='container'>"
-    Objtextfile.writeline "<a href='#' class='dl-btn'>Relatório abaixo</a>"
+    Objtextfile.writeline "<a href='#' class='dl-btn'>Relatï¿½rio abaixo</a>"
     Objtextfile.writeline "<!--<h4 class=' pull-left'>Signup now and get the latest news from us. (No spam)</h4>-->"
     Objtextfile.writeline "</div>"
     Objtextfile.writeline "</div>"
@@ -101,13 +101,13 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 
      objtextfile.WriteLine "<!---" & objItem.Caption & "--->"
        objtextfile.WriteLine objItem.Caption & "<br>"
-           objtextfile.WriteLine "Versão: " & objItem.Version & "<br>"
+           objtextfile.WriteLine "Versï¿½o: " & objItem.Version & "<br>"
        objtextfile.WriteLine "Service Pack: " & objItem.ServicePackMajorVersion & "<br>"
-       objtextfile.WriteLine "Outras descrições: " & objItem.OtherTypeDescription & "<br>"
+       objtextfile.WriteLine "Outras descriï¿½ï¿½es: " & objItem.OtherTypeDescription & "<br>"
      objtextfile.WriteLine "Boot Device: " & objItem.BootDevice & "<br>"
-     objtextfile.WriteLine "Diretorio Instalação: " & objItem.WindowsDirectory & "<br>"
-     objtextfile.WriteLine "Data de Instalação: " & dtmInstallDate & "<br>"
-     objtextfile.WriteLine "Organização: " & objItem.Organization & "<br>"
+     objtextfile.WriteLine "Diretorio Instalaï¿½ï¿½o: " & objItem.WindowsDirectory & "<br>"
+     objtextfile.WriteLine "Data de Instalaï¿½ï¿½o: " & dtmInstallDate & "<br>"
+     objtextfile.WriteLine "Organizaï¿½ï¿½o: " & objItem.Organization & "<br>"
      objtextfile.WriteLine "Usuario Registrado: " & objItem.RegisteredUser & "<br>"
      objtextfile.WriteLine "Serial Number: " & objItem.SerialNumber & "<br>"
    Next
@@ -134,7 +134,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
    Next
 
    '
-   ' Coletando Informações da BIOS
+   ' Coletando Informaï¿½ï¿½es da BIOS
    Set colBIOS = objWMIService.ExecQuery("Select * from Win32_BIOS")
      objtextfile.WriteLine "<center><h3><a name='#bios'>BIOS / Hardware</a></h3>"
 
@@ -159,8 +159,8 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
           "RDRAM", "DDR")
    totalslots = 0
 
-   'coletando informações da memória
-   objtextfile.WriteLine "<center><h3><a name='#mem'>Memória</a></h3>"
+   'coletando informaï¿½ï¿½es da memï¿½ria
+   objtextfile.WriteLine "<center><h3><a name='#mem'>Memï¿½ria</a></h3>"
 
    Set SlotMem = objWMIService.ExecQuery _
      ("Select * from Win32_PhysicalMemoryArray")
@@ -191,10 +191,10 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
    Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\CIMV2")
    Set colItems = objWMIService.ExecQuery( _
      "SELECT * FROM Win32_PageFileUsage",,48)
-   objtextfile.WriteLine "<br><h3>Arquivo de Paginação</h3><br>"
+   objtextfile.WriteLine "<br><h3>Arquivo de Paginaï¿½ï¿½o</h3><br>"
    objtextfile.WriteLine "<p><table border=2 width=500>"
-   objtextfile.WriteLine "<tr><td>localização</td><td>Tamanho</td><td>Utilização Atual</td><td>" & _
-   "Pico de Utilização</td></tr>"
+   objtextfile.WriteLine "<tr><td>localizaï¿½ï¿½o</td><td>Tamanho</td><td>Utilizaï¿½ï¿½o Atual</td><td>" & _
+   "Pico de Utilizaï¿½ï¿½o</td></tr>"
    For Each objItem In colItems
      wlinha = " "
      wlinha = "<tr><td>"
@@ -244,7 +244,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
    Set colItems2 = objWMIService.ExecQuery("Select * from Win32_NetworkAdapter") '
    objtextfile.WriteLine "<p>"
    objtextfile.WriteLine "<table border=2 width=1100>"
-   objtextfile.WriteLine "<tr><td>Tipo de Adaptador</td><td>Descriçao</td><td>Mac Address</td><td>" & _
+   objtextfile.WriteLine "<tr><td>Tipo de Adaptador</td><td>Descriï¿½ao</td><td>Mac Address</td><td>" & _
    "Fabricante</td><td>Status</td><td>Nome da Conexao</td><td>Velocidade</td></tr>"
    For Each objItem In colItems2
      If IsNull(objItem.AdapterType) then
@@ -281,7 +281,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
    objtextfile.WriteLine "</table>"
    Objtextfile.writeline "</p>"
 
-   objtextfile.writeline "<center><h3><a name='#tcp'>Endereços TCP/IP</a></h3>"
+   objtextfile.writeline "<center><h3><a name='#tcp'>Endereï¿½os TCP/IP</a></h3>"
    Set colftp = objWMIService.ExecQuery("Select * from Win32_NetworkAdapterConfiguration WHERE IPEnabled = True")
 
    'objtextfile.writeline "<table border=2 width=100%>"
@@ -373,11 +373,11 @@ Next
          W_ID= objDisk.DeviceID
      Select Case objDisk.DriveType
        Case 1
-         W_ID1 = "Tipo de Disco não Detectado"
+         W_ID1 = "Tipo de Disco nï¿½o Detectado"
        Case 2
-         W_ID1 = "Disco removível ou Disquete"
+         W_ID1 = "Disco removï¿½vel ou Disquete"
        Case 3
-         W_ID1 = "Disco Rígido Local"
+         W_ID1 = "Disco Rï¿½gido Local"
        Case 4
          W_ID1 ="Drive de Rede"
        Case 5
@@ -385,7 +385,7 @@ Next
        Case 6
          W_ID1 ="RAM disk."
        Case Else
-         W_ID1 = "Tipo de Disco não Detectado"
+         W_ID1 = "Tipo de Disco nï¿½o Detectado"
      End Select
      objtextfile.WriteLine "<tr><td>" & W_ID & "</td><td>" & W_ID1 & "</td></tr>"
    Next
@@ -419,14 +419,14 @@ Next
    Next
 
    '
-   ' Discos lógicos
+   ' Discos lï¿½gicos
    Const HARD_DISK = 3
 
-     objtextfile.WriteLine "<h3><a name='#discos'> Partições</a></h3>"
+     objtextfile.WriteLine "<h3><a name='#discos'> Partiï¿½ï¿½es</a></h3>"
    Set colDiskDrives = objWMIService.ExecQuery("Select * from Win32_LogicalDisk Where DriveType = " & HARD_DISK & "")
    objtextfile.WriteLine "<table border=2 width=500>"
-   objtextfile.WriteLine "<tr><td>Unidade</td><td>Tamanho (MB)</td><td>Tipo Partiçao" & _
-   "</td><td>Espaço Livre(MB)</td></tr>"
+   objtextfile.WriteLine "<tr><td>Unidade</td><td>Tamanho (MB)</td><td>Tipo Partiï¿½ao" & _
+   "</td><td>Espaï¿½o Livre(MB)</td></tr>"
    For Each objdisk In colDiskDrives
      objtextfile.WriteLine "<tr><td>" & objdisk.DeviceID & "</td><td>" & " " _
      & Int(objdisk.Size / 1024 / 1024) & "</td><td>" & " " _
@@ -478,7 +478,7 @@ Next
    colGroups.Filter = Array("group")
    objtextfile.WriteLine "<h3><a name='#usuarios'> Usuarios Locais</a></h3>"
    objtextfile.WriteLine "<table border=2 width=1000>"
-    objtextfile.WriteLine "<tr><td>Login</td><td>Nome Completo</td><td>Descriçao" & _
+    objtextfile.WriteLine "<tr><td>Login</td><td>Nome Completo</td><td>Descriï¿½ao" & _
    "</td><td>Status</td><td>Grupos</td></tr>"
    For Each objUser In colAccounts
      Wgrupo = " "
@@ -557,16 +557,16 @@ Next
    'objtextfile.WriteLine "</table>"
 
    '
-   'Coleta Serviços
+   'Coleta Serviï¿½os
    Set objWMIService = GetObject("winmgmts:" _
      & "{impersonationLevel=impersonate}!\\" & STRcomputer & "\root\cimv2")
     Set colListOfServices = objWMIService.ExecQuery _
        ("Select * from Win32_Service")
 
-   objtextfile.WriteLine "<h3><a name='#servicos'> Serviços</a></h3>"
+   objtextfile.WriteLine "<h3><a name='#servicos'> Serviï¿½os</a></h3>"
 
    objtextfile.WriteLine "<table border=2 width=800>"
-   objtextfile.WriteLine "<tr><td><b>Serviço</b></td><td><b>Startup</b></td><td><b>" & _
+   objtextfile.WriteLine "<tr><td><b>Serviï¿½o</b></td><td><b>Startup</b></td><td><b>" & _
    "Status</b></td><td><b>Usuario de Startup</b></b></td></tr>"
    For Each objService In colListOfServices
      if objService.State = "Stopped" then
@@ -691,4 +691,4 @@ Next
    Objtextfile.writeline "</html>"
 
 
-wscript.echo "Inventário Concluido"
+wscript.echo "Inventï¿½rio Concluido"
