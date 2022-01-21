@@ -373,11 +373,11 @@ Next
          W_ID= objDisk.DeviceID
      Select Case objDisk.DriveType
        Case 1
-         W_ID1 = "Tipo de Disco n�o Detectado"
+         W_ID1 = "Tipo de Disco nao Detectado"
        Case 2
-         W_ID1 = "Disco remov�vel ou Disquete"
+         W_ID1 = "Disco removivel ou Disquete"
        Case 3
-         W_ID1 = "Disco R�gido Local"
+         W_ID1 = "Disco Rigido Local"
        Case 4
          W_ID1 ="Drive de Rede"
        Case 5
@@ -563,7 +563,7 @@ Next
     Set colListOfServices = objWMIService.ExecQuery _
        ("Select * from Win32_Service")
 
-   objtextfile.WriteLine "<h3><a name='#servicos'> Servi�os</a></h3>"
+   objtextfile.WriteLine "<h3><a name='#servicos'> Serviços</a></h3>"
 
    objtextfile.WriteLine "<table border=2 width=800>"
    objtextfile.WriteLine "<tr><td><b>Servi�o</b></td><td><b>Startup</b></td><td><b>" & _
